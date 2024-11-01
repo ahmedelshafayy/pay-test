@@ -4,6 +4,7 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
@@ -14,7 +15,10 @@ public class ExcelUtils {
         XSSFWorkbook workbook = null;
 
         try {
-            file = new FileInputStream("C:\\222\\src\\test\\resources\\file.xlsx");
+           // file = new FileInputStream("C:\\222\\src\\test\\resources\\file.xlsx");
+            File filePath = new File("src/test/resources/file.xlsx");
+            String absolutePath = filePath.getAbsolutePath();
+            file = new FileInputStream(absolutePath);
             workbook = new XSSFWorkbook(file);
             XSSFSheet sheet = workbook.getSheetAt(0);
 
