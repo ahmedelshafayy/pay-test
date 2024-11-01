@@ -52,7 +52,7 @@ public class CheckoutPage {
     }
 
     public void completeOrder() {
-        WebElement proceedToBillingButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/app-root/div/app-checkout/aw-wizard/div/aw-wizard-step[3]/app-address/div/div/div/div/button")));
+        WebElement proceedToBillingButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//body/app-root[1]/div[1]/app-checkout[1]/aw-wizard[1]/div[1]/aw-wizard-step[3]/app-address[1]/div[1]/div[1]/div[1]/div[1]/button[1]")));
         proceedToBillingButton.click();
 
         // Select payment method and confirm order
