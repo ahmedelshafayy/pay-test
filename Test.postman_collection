@@ -1,0 +1,51 @@
+{
+	"info": {
+		"_postman_id": "0e4c24e3-e135-4114-9b3c-1a01d0f98c5e",
+		"name": "Test Copy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "39051130",
+		"_collection_link": "https://argaam.postman.co/workspace/Test~b20ac49f-d4e6-4c38-a24f-1bcb74a73a45/collection/39051130-0e4c24e3-e135-4114-9b3c-1a01d0f98c5e?action=share&source=collection_link&creator=39051130"
+	},
+	"item": [
+		{
+			"name": "New Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"pm.test(\"Response contains id, name, and job\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.have.property(\"id\");  // Check that \"id\" exists\r",
+							"    pm.expect(jsonData).to.have.property(\"name\", \"Ahmed Elshafay\");  // Validate name\r",
+							"    pm.expect(jsonData).to.have.property(\"job\", \"Software Engineer\");  // Validate job\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Ahmed Elshafay\",\r\n    \"job\": \"Software Engineer\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://reqres.in/api/users"
+			},
+			"response": []
+		}
+	]
+}
