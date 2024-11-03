@@ -9,8 +9,24 @@ public class CheckoutTest extends  TestBase {
     public void testCheckoutProcess() {
         test = extent.createTest("Checkout Process Test");
 
-        test.info("Opening the home page");
-        driver.get("https://practicesoftwaretesting.com/");
+        test.info("Opening the Register");
+        driver.get("https://practicesoftwaretesting.com/auth/register");
+        String email = ExcelUtils.readDataFromExcel("email");
+        String password = ExcelUtils.readDataFromExcel("password");
+        String address = ExcelUtils.readDataFromExcel("address");
+        String city = ExcelUtils.readDataFromExcel("city");
+        String state = ExcelUtils.readDataFromExcel("state");
+        String country = ExcelUtils.readDataFromExcel("country");
+        String postcode = ExcelUtils.readDataFromExcel("postcode");
+        String firstName = ExcelUtils.readDataFromExcel("First name");
+        String lastName = ExcelUtils.readDataFromExcel("Last name");
+        String phone = ExcelUtils.readDataFromExcel("phone");
+        String BD = ExcelUtils.readDataFromExcel("BD");
+
+        test.info("Signup");
+        signupPage.signupData(address, city, state, country, postcode,firstName,lastName,phone,BD,email, password);
+        signupPage.register();
+        signupPage.goToHome();
 
         test.info("Selecting a product");
         homePage.selectProduct();
@@ -22,15 +38,6 @@ public class CheckoutTest extends  TestBase {
         homePage.proceedToCheckout();
 
         checkoutPage.checkOutGo();
-
-        // Read login and billing information from Excel
-        String email = ExcelUtils.readDataFromExcel("email");
-        String password = ExcelUtils.readDataFromExcel("password");
-        String address = ExcelUtils.readDataFromExcel("address");
-        String city = ExcelUtils.readDataFromExcel("city");
-        String state = ExcelUtils.readDataFromExcel("state");
-        String country = ExcelUtils.readDataFromExcel("country");
-        String postcode = ExcelUtils.readDataFromExcel("postcode");
 
         test.info("Entering logging data");
 

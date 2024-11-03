@@ -8,6 +8,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import pages.CheckoutPage;
 import pages.HomePage;
+import pages.SignupPage;
 
 public class TestBase {
     public WebDriver driver;
@@ -15,6 +16,8 @@ public class TestBase {
     public CheckoutPage checkoutPage;
     public static ExtentReports extent;
     public ExtentTest test;
+    public SignupPage signupPage;
+
     @BeforeMethod
     public void setUp() {
 
@@ -26,6 +29,7 @@ public class TestBase {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         homePage = new HomePage(driver);
+        signupPage = new SignupPage(driver);
         checkoutPage = new CheckoutPage(driver);
     }
 
